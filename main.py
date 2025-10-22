@@ -1,8 +1,11 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request, Form
 from models import Movie
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, RedirectResponse
+from fastapi.templating import Jinja2Templates
 
 app = FastAPI()
+
+templates = Jinja2Templates(directory="templates")
 
 # user1 = User(name="John Doe", id=1, age=20)
 # user2 = User(name="Doe John", id=2, age=20)
@@ -39,6 +42,10 @@ async def get_name_movie(name:str):
     for movie in movies_list:
         if movie.name == name:
             return movie
+
+@app.get("/add_movie", response_class=HTMLResponse)
+async def add_new_movie(request: Request):
+    return templates.TemplateResponse("form_add_new_movie.html", {"request": request})
 
 @app.get("/movietop/{id}")
 async def get_movie(id: int):

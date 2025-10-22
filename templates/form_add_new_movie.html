@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add new movie</title>
+</head>
+<body>
+    <form action="/add-movie" method="post">
+        <div>
+            <label for="name">Название фильма:</label><br>
+            <input type="text" id="name" name="name" required>
+        </div>
+
+        <div>
+            <label for="director">Режиссер:</label><br>
+            <input type="text" id="director" name="director" required>
+        </div>
+
+        <div>
+            <label for="cost">Кассовые сборы</label><br>
+            <input type="number" id="cost" name="cost" required>
+        </div>
+</body>
+</html>
