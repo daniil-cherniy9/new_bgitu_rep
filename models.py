@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 
-class User(BaseModel):
+class Movie(BaseModel):
     name: str
     id: int
-    age: int
+    cost: int
+    director: str
