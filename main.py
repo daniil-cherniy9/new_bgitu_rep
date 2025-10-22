@@ -27,9 +27,7 @@ movies_list = [movie1, movie2, movie3,movie4, movie5,movie6,movie7,movie8,movie9
 
 @app.get("/")
 async def root():
-    for movie in movies_list:
-        if movie.id==id:
-            return movie
+    return {"message": 'Главная страница'}
 
 @app.get("/study")
 async def get_users():
@@ -46,6 +44,31 @@ async def get_name_movie(name:str):
 @app.get("/add_movie", response_class=HTMLResponse)
 async def add_new_movie(request: Request):
     return templates.TemplateResponse("form_add_new_movie.html", {"request": request})
+
+@app.post("/get_movie")
+async def add_new_movie_post(
+    name: str = Form(...),
+    director: str=Form(...),
+    cost: int=Form(...),
+    rating: int=Form(...)
+):
+    new_id = max(movie.id for movie in movies_list) + 1 if movies_list else 1
+
+    new_movie = Movie(
+        id=new_id,
+        name=name,
+        director=director,
+        cost=cost,
+        rating = rating
+    )
+
+    movies_list.append(new_movie)
+
+    return RedirectResponse(url="/all_movies_json", status_code=303)
+
+@app.get("/all_movies_json")
+async def show_all_movies_json():
+    return movies_list
 
 @app.get("/movietop/{id}")
 async def get_movie(id: int):
