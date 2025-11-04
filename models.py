@@ -7,3 +7,7 @@ class Movie(BaseModel):
     cost: int
     director: str
     rating: Optional[int] = None
+
+class User(BaseModel):
+    login: str
+    password: str
