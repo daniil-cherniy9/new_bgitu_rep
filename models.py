@@ -11,3 +11,8 @@ class Movie(BaseModel):
 class User(BaseModel):
     login: str
     password: str
+
+class LoginRequest:
+    def __init__(self, username: str, password: str):
+        self.username = username
+        self.password = password
