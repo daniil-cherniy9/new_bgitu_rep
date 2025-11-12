@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Film</title>
+</head>
+<body>
+    <h1>Add New Film</h1>
+    <form method="post" action="/get_movie">
+        <div>
+            <label>JWT Token:</label>
+            <input type="text" name="token" required style="width: 400px;"
+                   placeholder="">
+        </div>
+        <div>
+            <label>Name:</label>
+            <input type="text" name="name" required>
+        </div>
+        <div>
+            <label>Director:</label>
+            <input type="text" name="director" required>
+        </div>
+        <div>
+            <label>Cost:</label>
+            <input type="number" name="cost" required>
+        </div>
+        <div>
+            <label>Rating:</label>
+            <input type="number" name="rating" min="1" max="10">
+        </div>
+        <button type="submit">Add Film</button>
+    </form>
+</body>
+</html>

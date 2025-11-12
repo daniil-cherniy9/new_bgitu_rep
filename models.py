@@ -8,11 +8,6 @@ class Movie(BaseModel):
     director: str
     rating: Optional[int] = None
 
-class User(BaseModel):
-    login: str
+class LoginRequest(BaseModel):
+    username: str
     password: str
-
-class LoginRequest:
-    def __init__(self, username: str, password: str):
-        self.username = username
-        self.password = password
