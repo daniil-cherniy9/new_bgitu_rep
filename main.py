@@ -23,7 +23,6 @@ async def login_form(
 
     access_token = create_access_token(username)
 
-    # Возвращаем токен в JSON формате
     return JSONResponse({
         "access_token": access_token,
         "token_type": "bearer"
@@ -42,9 +41,8 @@ async def get_movie_post(
     director: str = Form(...),
     cost: int = Form(...),
     rating: int = Form(...),
-    token: str = Form(...)  # Добавляем токен из формы
+    token: str = Form(...)
 ):
-    # Проверяем токен из формы
     username = get_current_user(token)
 
     new_movie = add_movie(name, director, cost, rating)
