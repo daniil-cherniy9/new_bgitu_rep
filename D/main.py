@@ -7,6 +7,9 @@ from database import add_movie, get_all_movies
 app = FastAPI()
 templates = Jinja2Templates(directory="templates")
 
+@app.get("/study", response_class=HTMLResponse)
+async def add_film_page(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
 
 @app.get("/login", response_class=HTMLResponse)
 async def login_page(request: Request):
@@ -62,3 +65,5 @@ if __name__ == "__main__":
     import uvicorn
 
     uvicorn.run(app, host="0.0.0.0", port=8165)
+
+# сделать все задания в разных папках абвг
