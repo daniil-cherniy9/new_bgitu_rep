@@ -16,6 +16,7 @@ movie1 = Movie(name='The Shawshank Redemption', id=1, cost=25000000, director='F
 movies_list = [movie1]
 
 
+
 def get_current_user(request: Request):
     session_token = request.cookies.get("session_token")
     if not session_token:
